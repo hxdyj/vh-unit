@@ -1,0 +1,15 @@
+$vh1: var(--vh, 1vh);
+@function sum($numbers...) {
+  $sum: 0px;
+  @each $number in $numbers {
+    $sum: $sum + $number;
+  }
+  @return $sum;
+}
+@function vh($num, $other...) {
+  @if length($other) > 0 {
+    @return calc(#{$vh1} * #{$num} + #{sum($other...)});
+  } @else {
+    @return calc(#{$vh1} * #{$num});
+  }
+}
