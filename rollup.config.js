@@ -2,6 +2,7 @@
 import { uglify } from 'rollup-plugin-uglify'
 import typescript from 'rollup-plugin-typescript';
 import bundleScss from 'rollup-plugin-bundle-scss';
+import dts from 'rollup-plugin-dts';
 export default [
     {
         input: 'src/index.ts',
@@ -38,6 +39,16 @@ export default [
             bundleScss({
                 output: '../style/index.scss'
             }),
+        ]
+    },
+    {
+        input: 'src/index.ts',
+        output: {
+            file: 'typings/index.d.ts',
+            format: 'es'
+        },
+        plugins: [
+            dts()
         ]
     },
 
